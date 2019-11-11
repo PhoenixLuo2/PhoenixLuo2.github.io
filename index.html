@@ -3,16 +3,16 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello</title>
+  <title>luofeng&#39;Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hello">
-<meta property="og:url" content="PhoenixLuo2.github.io/index.html">
-<meta property="og:site_name" content="Hello">
+<meta property="og:title" content="luofeng'Blog">
+<meta property="og:url" content="Phoenix�luo2.github.io/index.html">
+<meta property="og:site_name" content="luofeng'Blog">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello">
+<meta name="twitter:title" content="luofeng'Blog">
   
-    <link rel="alternate" href="/atom.xml" title="Hello" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="luofeng&#39;Blog" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -33,8 +33,12 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hello</a>
+        <a href="/" id="logo">luofeng&#39;Blog</a>
       </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">总得写点什么吧</a>
+        </h2>
       
     </div>
     <div id="header-inner" class="inner">
@@ -53,7 +57,7 @@
         <a id="nav-search-btn" class="nav-icon" title="Search"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="PhoenixLuo2.github.io"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="Phoenix�luo2.github.io"></form>
       </div>
     </div>
   </div>
@@ -86,13 +90,13 @@
         <h3 id="1-环境预置"><a href="#1-环境预置" class="headerlink" title="1.环境预置"></a>1.环境预置</h3><h3 id="安装JDK1-8"><a href="#安装JDK1-8" class="headerlink" title="安装JDK1.8"></a>安装<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="external">JDK1.8</a></h3><h3 id="2-创建scala的maven项目"><a href="#2-创建scala的maven项目" class="headerlink" title="2.创建scala的maven项目"></a>2.创建scala的maven项目</h3><p><img src="/images/maven_project.png" alt=""></p>
 <h3 id="3-安装scala语言插件，使用2-11-12版本"><a href="#3-安装scala语言插件，使用2-11-12版本" class="headerlink" title="3.安装scala语言插件，使用2.11.12版本"></a>3.安装scala语言插件，使用2.11.12版本</h3><p><img src="/images/scala.bmp" alt=""><br><img src="/images/sdk.bmp" alt=""></p>
 <h3 id="4-添加pom依赖项"><a href="#4-添加pom依赖项" class="headerlink" title="4.添加pom依赖项"></a>4.添加pom依赖项</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div></pre></td><td class="code"><pre><div class="line">  &lt;properties&gt;</div><div class="line">    &lt;project.build.sourceEncoding&gt;UTF-8&lt;/project.build.sourceEncoding&gt;</div><div class="line">    &lt;flink.version&gt;1.6.1&lt;/flink.version&gt;</div><div class="line">    &lt;scala.binary.version&gt;2.11&lt;/scala.binary.version&gt;</div><div class="line">    &lt;scala.version&gt;2.11.12&lt;/scala.version&gt;</div><div class="line">    &lt;maven.build.timestamp.format&gt;yyyyMMddHHmmss&lt;/maven.build.timestamp.format&gt;</div><div class="line">  &lt;/properties&gt;</div><div class="line"></div><div class="line">&lt;dependencies&gt;</div><div class="line">    &lt;!-- Apache Flink dependencies --&gt;</div><div class="line">    &lt;!-- These dependencies are provided, because they should not be packaged into the JAR file. --&gt;</div><div class="line">    &lt;dependency&gt;</div><div class="line">      &lt;groupId&gt;org.apache.flink&lt;/groupId&gt;</div><div class="line">      &lt;artifactId&gt;flink-scala_$&#123;scala.binary.version&#125;&lt;/artifactId&gt;</div><div class="line">      &lt;version&gt;$&#123;flink.version&#125;&lt;/version&gt;</div><div class="line">      &lt;scope&gt;provided&lt;/scope&gt;</div><div class="line">    &lt;/dependency&gt;</div><div class="line">    &lt;dependency&gt;</div><div class="line">      &lt;groupId&gt;org.apache.flink&lt;/groupId&gt;</div><div class="line">      &lt;artifactId&gt;flink-streaming-scala_$&#123;scala.binary.version&#125;&lt;/artifactId&gt;</div><div class="line">      &lt;version&gt;$&#123;flink.version&#125;&lt;/version&gt;</div><div class="line">      &lt;scope&gt;provided&lt;/scope&gt;</div><div class="line">    &lt;/dependency&gt;</div><div class="line"></div><div class="line">    &lt;!-- Scala Library, provided by Flink as well. --&gt;</div><div class="line">    &lt;dependency&gt;</div><div class="line">      &lt;groupId&gt;org.scala-lang&lt;/groupId&gt;</div><div class="line">      &lt;artifactId&gt;scala-library&lt;/artifactId&gt;</div><div class="line">      &lt;version&gt;$&#123;scala.version&#125;&lt;/version&gt;</div><div class="line">      &lt;scope&gt;provided&lt;/scope&gt;</div><div class="line">    &lt;/dependency&gt;</div><div class="line">&lt;/dependencies&gt;</div></pre></td></tr></table></figure>
-<h3 id="5-运行示例程序，统计单词个数"><a href="#5-运行示例程序，统计单词个数" class="headerlink" title="5.运行示例程序，统计单词个数"></a>5.运行示例程序，统计单词个数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">package com.feng.www</div><div class="line"></div><div class="line">import org.apache.flink.api.scala._</div><div class="line"></div><div class="line">object WordCountJob &#123;</div><div class="line">  def main(args: Array[String]) &#123;</div><div class="line">    // 1.设置运行环境</div><div class="line">    val env = ExecutionEnvironment.getExecutionEnvironment</div><div class="line"></div><div class="line">    //2.创造测试数据</div><div class="line">    val text = env.readTextFile(&quot;E:\\src\\simple-flink\\data\\README.txt&quot;)</div><div class="line"></div><div class="line">    //3.进行wordcount运算</div><div class="line">    val counts = text.flatMap(_.toLowerCase.split(&quot;\\W+&quot;))</div><div class="line">      .map((_, 1)).groupBy(0).sum(1)</div><div class="line"></div><div class="line">    //4.打印测试结构</div><div class="line">    counts.print()</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="5-运行示例程序，统计单词个数"><a href="#5-运行示例程序，统计单词个数" class="headerlink" title="5.运行示例程序，统计单词个数"></a>5.运行示例程序，统计单词个数</h3><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">package com.feng.www</div><div class="line"></div><div class="line">import org.apache.flink.api.scala._</div><div class="line"></div><div class="line">object WordCountJob &#123;</div><div class="line">  def main(args: Array[String]) &#123;</div><div class="line">    // 1.设置运行环境</div><div class="line">    val env = ExecutionEnvironment.getExecutionEnvironment</div><div class="line"></div><div class="line">    //2.创造测试数据</div><div class="line">    val text = env.readTextFile("E:\\src\\simple-flink\\data\\README.txt")</div><div class="line"></div><div class="line">    //3.进行wordcount运算</div><div class="line">    val counts = text.flatMap(_.toLowerCase.split("\\W+"))</div><div class="line">      .map((_, 1)).groupBy(0).sum(1)</div><div class="line"></div><div class="line">    //4.打印测试结构</div><div class="line">    counts.print()</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h3 id="6-运行结果"><a href="#6-运行结果" class="headerlink" title="6.运行结果:"></a>6.运行结果:</h3><p><img src="/images/run.png" alt=""></p>
 <h3 id="7-完毕"><a href="#7-完毕" class="headerlink" title="7.完毕"></a>7.完毕</h3>
       
     </div>
     <footer class="article-footer">
-      <a data-url="PhoenixLuo2.github.io/2019/11/10/Flink学习初体验/" data-id="ck2t65na7000034r1cypb1ut5" class="article-share-link">Share</a>
+      <a data-url="Phoenix�luo2.github.io/2019/11/10/Flink学习初体验/" data-id="ck2uk4oz60000wwr1wog8cvh0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -208,7 +212,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="PhoenixLuo2.github.io/2019/11/10/hello-world/" data-id="ck2t65nby000134r1sc1noeb7" class="article-share-link">Share</a>
+      <a data-url="Phoenix�luo2.github.io/2019/11/10/hello-world/" data-id="ck2uk4ozm0001wwr1b60ces2r" class="article-share-link">Share</a>
       
       
     </footer>
