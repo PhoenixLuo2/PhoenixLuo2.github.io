@@ -65,6 +65,45 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Docker on window初体验" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/23/Docker on window初体验/" class="article-date">
+  <time datetime="2019-11-23T12:40:00.000Z" itemprop="datePublished">2019-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/23/Docker on window初体验/">Docker on window初体验</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-安装docker-on-window"><a href="#1-安装docker-on-window" class="headerlink" title="1.安装docker on window"></a>1.安装<a href="https://www.jianshu.com/p/d809971b1fc1" target="_blank" rel="external">docker on window</a></h3><p>1、Docker Compose for Window 不知道什么用，勾选<br>2、VirtualBox 虚拟机(可以试试不安装这个，如果Bash操作的话)<br>3、Kitematic for Windows(Alpha) 使用图形界面来使用 docker(可以试试不安装这个，如果Bash操作的话)<br>4、Git for Windows 一个版本控制 + bash 命令终端，如果没有安装建议勾选<br><img src="/images/docker_tool.bmp" alt=""></p>
+<h3 id="2、启动Docker"><a href="#2、启动Docker" class="headerlink" title="2、启动Docker"></a>2、启动Docker</h3><p><img src="/images/docker_tool_start.bmp" alt=""><br>启动docker toolbox的时候，会出现找不到而去下载boot2docker.iso的情况，断开网络，拷贝安装目录下的boot2docker.iso到目的路径即可。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker pull busybox  //https://registry-1.docker.io/v2/ 需要翻墙</div><div class="line">winpt docker run -it --rm busybox</div></pre></td></tr></table></figure></p>
+<h4 id="3、遇到问题"><a href="#3、遇到问题" class="headerlink" title="3、遇到问题"></a>3、遇到问题</h4><p>直接使用docker run 运行ubuntu的镜像时会出现”the input device is not a TTY.  If you are using mintty, try prefixing the command with ‘winpty’”的错误，前面加上winpty即可。<br><img src="/images/docker_tool_run.bmp" alt=""></p>
+<h3 id="4-完毕"><a href="#4-完毕" class="headerlink" title="4.完毕"></a>4.完毕</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="Phoenix�luo2.github.io/2019/11/23/Docker on window初体验/" data-id="ck3bk21r30000zsr1cpmn4fcj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Flink学习初体验" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2019/11/10/Flink学习初体验/" class="article-date">
@@ -96,7 +135,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="Phoenix�luo2.github.io/2019/11/10/Flink学习初体验/" data-id="ck2uk4oz60000wwr1wog8cvh0" class="article-share-link">Share</a>
+      <a data-url="Phoenix�luo2.github.io/2019/11/10/Flink学习初体验/" data-id="ck3bk21r80001zsr16gdy3qxb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -212,7 +251,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="Phoenix�luo2.github.io/2019/11/10/hello-world/" data-id="ck2uk4ozm0001wwr1b60ces2r" class="article-share-link">Share</a>
+      <a data-url="Phoenix�luo2.github.io/2019/11/10/hello-world/" data-id="ck3bk21vu0002zsr1v2kj26n4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -250,6 +289,10 @@
     <h3 class="widget-title">Recent Posts</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2019/11/23/Docker on window初体验/">Docker on window初体验</a>
+          </li>
         
           <li>
             <a href="/2019/11/10/Flink学习初体验/">Flink学习初体验</a>

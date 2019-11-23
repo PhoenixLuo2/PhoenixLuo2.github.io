@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Docker on window初体验 | luofeng&#39;Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1.安装docker on window1、Docker Compose for Window 不知道什么用，勾选2、VirtualBox 虚拟机(可以试试不安装这个，如果Bash操作的话)3、Kitematic for Windows(Alpha) 使用图形界面来使用 docker(可以试试不安装这个，如果Bash操作的话)4、Git for Windows 一个版本控制 + bash 命令终端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker on window初体验">
+<meta property="og:url" content="Phoenix�luo2.github.io/2019/11/23/Docker on window初体验/index.html">
+<meta property="og:site_name" content="luofeng'Blog">
+<meta property="og:description" content="1.安装docker on window1、Docker Compose for Window 不知道什么用，勾选2、VirtualBox 虚拟机(可以试试不安装这个，如果Bash操作的话)3、Kitematic for Windows(Alpha) 使用图形界面来使用 docker(可以试试不安装这个，如果Bash操作的话)4、Git for Windows 一个版本控制 + bash 命令终端">
+<meta property="og:image" content="Phoenix�luo2.github.io/images/docker_tool.bmp">
+<meta property="og:image" content="Phoenix�luo2.github.io/images/docker_tool_start.bmp">
+<meta property="og:image" content="Phoenix�luo2.github.io/images/docker_tool_run.bmp">
+<meta property="og:updated_time" content="2019-11-23T12:46:50.880Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Docker on window初体验">
+<meta name="twitter:description" content="1.安装docker on window1、Docker Compose for Window 不知道什么用，勾选2、VirtualBox 虚拟机(可以试试不安装这个，如果Bash操作的话)3、Kitematic for Windows(Alpha) 使用图形界面来使用 docker(可以试试不安装这个，如果Bash操作的话)4、Git for Windows 一个版本控制 + bash 命令终端">
+<meta name="twitter:image" content="Phoenix�luo2.github.io/images/docker_tool.bmp">
+  
+    <link rel="alternate" href="/atom.xml" title="luofeng&#39;Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <!--<link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">-->
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">luofeng&#39;Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">总得写点什么吧</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="Phoenix�luo2.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Docker on window初体验" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/11/23/Docker on window初体验/" class="article-date">
+  <time datetime="2019-11-23T12:40:00.000Z" itemprop="datePublished">2019-11-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Docker on window初体验
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-安装docker-on-window"><a href="#1-安装docker-on-window" class="headerlink" title="1.安装docker on window"></a>1.安装<a href="https://www.jianshu.com/p/d809971b1fc1" target="_blank" rel="external">docker on window</a></h3><p>1、Docker Compose for Window 不知道什么用，勾选<br>2、VirtualBox 虚拟机(可以试试不安装这个，如果Bash操作的话)<br>3、Kitematic for Windows(Alpha) 使用图形界面来使用 docker(可以试试不安装这个，如果Bash操作的话)<br>4、Git for Windows 一个版本控制 + bash 命令终端，如果没有安装建议勾选<br><img src="/images/docker_tool.bmp" alt=""></p>
+<h3 id="2、启动Docker"><a href="#2、启动Docker" class="headerlink" title="2、启动Docker"></a>2、启动Docker</h3><p><img src="/images/docker_tool_start.bmp" alt=""><br>启动docker toolbox的时候，会出现找不到而去下载boot2docker.iso的情况，断开网络，拷贝安装目录下的boot2docker.iso到目的路径即可。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">docker pull busybox  //https://registry-1.docker.io/v2/ 需要翻墙</div><div class="line">winpt docker run -it --rm busybox</div></pre></td></tr></table></figure></p>
+<h4 id="3、遇到问题"><a href="#3、遇到问题" class="headerlink" title="3、遇到问题"></a>3、遇到问题</h4><p>直接使用docker run 运行ubuntu的镜像时会出现”the input device is not a TTY.  If you are using mintty, try prefixing the command with ‘winpty’”的错误，前面加上winpty即可。<br><img src="/images/docker_tool_run.bmp" alt=""></p>
+<h3 id="4-完毕"><a href="#4-完毕" class="headerlink" title="4.完毕"></a>4.完毕</h3>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="Phoenix�luo2.github.io/2019/11/23/Docker on window初体验/" data-id="ck3bk21r30000zsr1cpmn4fcj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2019/11/10/Flink学习初体验/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Flink学习初体验</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2019/11/23/Docker on window初体验/">Docker on window初体验</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/10/Flink学习初体验/">Flink学习初体验</a>
+          </li>
+        
+          <li>
+            <a href="/2019/11/10/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2019 luofeng<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="/js/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
