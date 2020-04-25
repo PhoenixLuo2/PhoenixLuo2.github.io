@@ -90,12 +90,12 @@
         <h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">给你一个非空的字符串 s 和一个整数 k，你要将这个字符串中的字母进行重新排列，使得重排后的字符串中相同字母的位置间隔距离至少为 k。</div><div class="line"></div><div class="line">所有输入的字符串都由小写字母组成，如果找不到距离至少为 k 的重排结果，请返回一个空字符串 <span class="string">""</span>。</div><div class="line"></div><div class="line">示例 1：</div><div class="line"></div><div class="line">输入: s = <span class="string">"aabbcc"</span>, k = 3</div><div class="line">输出: <span class="string">"abcabc"</span></div><div class="line">解释: 相同的字母在新的字符串中间隔至少 3 个单位距离。</div><div class="line">示例 2:</div><div class="line"></div><div class="line">输入: s = <span class="string">"aaabc"</span>, k = 3</div><div class="line">输出: <span class="string">""</span></div><div class="line">解释: 没有办法找到可能的重排结果。</div><div class="line">示例 3:</div><div class="line"></div><div class="line">输入: s = <span class="string">"aaadbbcc"</span>, k = 2</div><div class="line">输出: <span class="string">"abacabcd"</span></div><div class="line">解释: 相同的字母在新的字符串中间隔至少 2 个单位距离。</div></pre></td></tr></table></figure>
 <h3 id="2、解题想法"><a href="#2、解题想法" class="headerlink" title="2、解题想法"></a>2、解题想法</h3><p>先用 HashMap 或者Array 对字符串里的字符按出现次数进行统计，按次数由高到低进行排序。出现次数最多的字符个数记为max_cnt，max_cnt - 1 是所需要的间隔数。把剩下字符按出现次数多的字符开始，把每一个字符插入到间隔中，以此类推，直到所有字符插完。然后判断每一个间隔内的字符长度，如果任何一个间隔&lt;k，则不满足，返回””，如果都满足则返回这个新的字符串。</p>
 <h4 id="3、python-code"><a href="#3、python-code" class="headerlink" title="3、python code"></a>3、python code</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">import os</div><div class="line">class Solution(object):</div><div class="line">    def rearrangeString(self, str, k):</div><div class="line">        cnts = [0] * 26;</div><div class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> str:</div><div class="line">            cnts[ord(c) - ord(<span class="string">'a'</span>)] += 1</div><div class="line"></div><div class="line">        sorted_cnts = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(26):</div><div class="line">            sorted_cnts.append((cnts[i], chr(i + ord(<span class="string">'a'</span>))))</div><div class="line">        sorted_cnts.sort(reverse=True)</div><div class="line"></div><div class="line">        max_cnt = sorted_cnts[0][0]</div><div class="line">        blocks = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> range(max_cnt)]</div><div class="line">        i = 0</div><div class="line">        <span class="keyword">for</span> cnt <span class="keyword">in</span> sorted_cnts:</div><div class="line">            <span class="keyword">for</span> _ <span class="keyword">in</span> range(cnt[0]):</div><div class="line">                blocks[i].append(cnt[1])</div><div class="line">                i = (i + 1) % max(cnt[0], max_cnt - 1)</div><div class="line"></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(max_cnt - 1):</div><div class="line">            <span class="keyword">if</span> len(blocks[i]) &lt; k:</div><div class="line">                <span class="built_in">return</span> <span class="string">""</span></div><div class="line"></div><div class="line">        <span class="built_in">return</span> <span class="string">""</span>.join(map(lambda x: <span class="string">""</span>.join(x), blocks))</div><div class="line"></div><div class="line">aa = Solution()</div><div class="line"><span class="built_in">print</span>(aa.rearrangeString(<span class="string">"aaaabbbbc"</span>,3))</div></pre></td></tr></table></figure>
-<p><img src="/images/leetcode1.bmp" alt=""></p>
+<h4 id="4、调试图例"><a href="#4、调试图例" class="headerlink" title="4、调试图例"></a>4、调试图例</h4><p><img src="/images/leetcode1.bmp" alt=""></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="Phoenix�luo2.github.io/2020/04/25/按距离k间隔重排字符串/" data-id="ck9f9nyxq0000j0r1a2y9hczl" class="article-share-link">Share</a>
+      <a data-url="Phoenix�luo2.github.io/2020/04/25/按距离k间隔重排字符串/" data-id="ck9f9shoh0003fwr13zavverz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -134,7 +134,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="Phoenix�luo2.github.io/2019/11/23/Docker on window初体验/" data-id="ck9f9nyy10003j0r1xwa1tll8" class="article-share-link">Share</a>
+      <a data-url="Phoenix�luo2.github.io/2019/11/23/Docker on window初体验/" data-id="ck9f9shny0002fwr1vywzq30b" class="article-share-link">Share</a>
       
       
     </footer>
@@ -175,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="Phoenix�luo2.github.io/2019/11/10/Flink学习初体验/" data-id="ck9f9nyxv0001j0r1roye1odd" class="article-share-link">Share</a>
+      <a data-url="Phoenix�luo2.github.io/2019/11/10/Flink学习初体验/" data-id="ck9f9shnq0000fwr1ux18xcd9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -291,7 +291,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="Phoenix�luo2.github.io/2019/11/10/hello-world/" data-id="ck9f9nyxy0002j0r1qepya8mr" class="article-share-link">Share</a>
+      <a data-url="Phoenix�luo2.github.io/2019/11/10/hello-world/" data-id="ck9f9shnv0001fwr1q0jc9gn6" class="article-share-link">Share</a>
       
       
     </footer>
