@@ -54,7 +54,7 @@
         
           <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Zoeken"></a>
       </nav>
       <div id="search-form-wrap">
         <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="Phoenix�luo2.github.io"></form>
@@ -64,6 +64,141 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="leetcode-按距离k间隔重排字符串" class="article article-type-leetcode" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/25/按距离k间隔重排字符串/" class="article-date">
+  <time datetime="2020-04-25T06:46:43.000Z" itemprop="datePublished">2020-04-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/25/按距离k间隔重排字符串/">按距离k间隔重排字符串</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-题目"><a href="#1-题目" class="headerlink" title="1.题目"></a>1.题目</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">给你一个非空的字符串 s 和一个整数 k，你要将这个字符串中的字母进行重新排列，使得重排后的字符串中相同字母的位置间隔距离至少为 k。</div><div class="line"></div><div class="line">所有输入的字符串都由小写字母组成，如果找不到距离至少为 k 的重排结果，请返回一个空字符串 <span class="string">""</span>。</div><div class="line"></div><div class="line">示例 1：</div><div class="line"></div><div class="line">输入: s = <span class="string">"aabbcc"</span>, k = 3</div><div class="line">输出: <span class="string">"abcabc"</span></div><div class="line">解释: 相同的字母在新的字符串中间隔至少 3 个单位距离。</div><div class="line">示例 2:</div><div class="line"></div><div class="line">输入: s = <span class="string">"aaabc"</span>, k = 3</div><div class="line">输出: <span class="string">""</span></div><div class="line">解释: 没有办法找到可能的重排结果。</div><div class="line">示例 3:</div><div class="line"></div><div class="line">输入: s = <span class="string">"aaadbbcc"</span>, k = 2</div><div class="line">输出: <span class="string">"abacabcd"</span></div><div class="line">解释: 相同的字母在新的字符串中间隔至少 2 个单位距离。</div></pre></td></tr></table></figure>
+<h3 id="2、解题想法"><a href="#2、解题想法" class="headerlink" title="2、解题想法"></a>2、解题想法</h3><p>先用 HashMap 或者Array 对字符串里的字符按出现次数进行统计，按次数由高到低进行排序。出现次数最多的字符个数记为max_cnt，max_cnt - 1 是所需要的间隔数。把剩下字符按出现次数多的字符开始，把每一个字符插入到间隔中，以此类推，直到所有字符插完。然后判断每一个间隔内的字符长度，如果任何一个间隔&lt;k，则不满足，返回””，如果都满足则返回这个新的字符串。</p>
+<h4 id="3、python-code"><a href="#3、python-code" class="headerlink" title="3、python code"></a>3、python code</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">import os</div><div class="line">class Solution(object):</div><div class="line">    def rearrangeString(self, str, k):</div><div class="line">        cnts = [0] * 26;</div><div class="line">        <span class="keyword">for</span> c <span class="keyword">in</span> str:</div><div class="line">            cnts[ord(c) - ord(<span class="string">'a'</span>)] += 1</div><div class="line"></div><div class="line">        sorted_cnts = []</div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(26):</div><div class="line">            sorted_cnts.append((cnts[i], chr(i + ord(<span class="string">'a'</span>))))</div><div class="line">        sorted_cnts.sort(reverse=True)</div><div class="line"></div><div class="line">        max_cnt = sorted_cnts[0][0]</div><div class="line">        blocks = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> range(max_cnt)]</div><div class="line">        i = 0</div><div class="line">        <span class="keyword">for</span> cnt <span class="keyword">in</span> sorted_cnts:</div><div class="line">            <span class="keyword">for</span> _ <span class="keyword">in</span> range(cnt[0]):</div><div class="line">                blocks[i].append(cnt[1])</div><div class="line">                i = (i + 1) % max(cnt[0], max_cnt - 1)</div><div class="line"></div><div class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(max_cnt - 1):</div><div class="line">            <span class="keyword">if</span> len(blocks[i]) &lt; k:</div><div class="line">                <span class="built_in">return</span> <span class="string">""</span></div><div class="line"></div><div class="line">        <span class="built_in">return</span> <span class="string">""</span>.join(map(lambda x: <span class="string">""</span>.join(x), blocks))</div><div class="line"></div><div class="line">aa = Solution()</div><div class="line"><span class="built_in">print</span>(aa.rearrangeString(<span class="string">"aaaabbbbc"</span>,3))</div></pre></td></tr></table></figure>
+<p><img src="/images/leetcode1.bmp" alt=""></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="Phoenix�luo2.github.io/2020/04/25/按距离k间隔重排字符串/" data-id="ck9f9h4xb0002j8r1zj2y7m3a" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-写作逻辑训练" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/02/写作逻辑训练/" class="article-date">
+  <time datetime="2020-02-02T11:08:33.000Z" itemprop="datePublished">2020-02-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/02/写作逻辑训练/">语言组织能力和叙事微观逻辑专项训练--第二篇</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h3><ul>
+<li>字数：400-500字。</li>
+<li>按照下面的简单格式完成一篇作业，暴露出自身的语言、微观逻辑问题。</li>
+<li>一定要按照这个格式（结构）来撰写作业，目的是初步培养您的结构意识，为将来撰写成型文章做准备。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">框架</th>
+<th style="text-align:left">内容</th>
+<th style="text-align:left">修改</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">总结</td>
+<td style="text-align:left">出差将近20天，工作过程中带来的体验并不好。</td>
+<td style="text-align:left">出差将近20天，我几乎每天都在应对层出不穷的问题，简直心力交瘁；工作体验并不好。</td>
+</tr>
+<tr>
+<td style="text-align:left">背景</td>
+<td style="text-align:left">我在杭州一家公司工作将近三年，工作能力被周围同事认可。</td>
+<td style="text-align:left">我在杭州一家软件公司工作将近三年，工作能力逐渐被周围同事和上司认可。因此，经常会被交付一些重要任务。</td>
+</tr>
+<tr>
+<td style="text-align:left">起因</td>
+<td style="text-align:left">恰好公司与哈尔滨当地有个合作项目，上级就指派我出差哈尔滨支持项目。</td>
+<td style="text-align:left">前段时间，公司与哈尔滨有个合作项目。我应上级指派前往当地支持项目推进。</td>
+</tr>
+<tr>
+<td style="text-align:left">经过</td>
+<td style="text-align:left">公司对合作项目所涉及的行业了解并不多。试想一个软件行业的公司与一个煤炭行业合作，前期倘若只通过纸面了解，没有深入现场，调试过程中容易遗漏现场的场景。实际中，调试过程经常出现一些或大或小的问题；时间一久，对方渐渐对我们产生不信任，加大了项目后期的阻力。所以目前项目处于停滞阶段。这个事情解决方案是后期重新梳理下客户场景，站在客户的角度把问题一一解决。重新获取客户的信任。<br>出差过程，个人感觉比较累。分析出的原因是，项目涉及多方的协调，每个团队水平参差不齐，而一个系统的产品其实是互相依赖的；一个节点阻塞，依赖他的相关工作也没法展开；一个节点有问题推倒重来，相关的工作也得重复做。这样一来一回消磨了精力，团队效率自然大打折扣。效率低还带来另外的问题，每个人很忙休息和玩的时间几乎没有，团队每人的精神状态比较差。问题暂时没有一个很好的解决方式，因为决定项目是否顺利还是取决于人，短时间没法改变。</td>
+<td style="text-align:left">起初，由于公司对合作项目所涉及的行业跨度大，我对相关业务知识了解并不多，缺少实地勘验的经验；以至于调试过程中容易遗漏现场的场景，以及出现一些其它或大或小的问题。时间一久，信任裂缝产生，加大了项目后期的阻力，导致其目前处于停滞阶段。<br>对此，我急得抓耳挠腮，绞尽脑汁思考解决方案，好在功夫不负有心人，有所收获；即重新梳理客户场景，站在客户的角度把问题一一解决，重新获取客户信任。<br>然而，理想很丰满，现实很骨感。项目涉及多方的协调，每个团队水平参差不齐。我时常因一个节点阻塞将整个相关环节推倒重来，重复进行工作。这样一来一回，消磨了大量精力，效率大打折扣，进程推进缓慢。<br>加之休息时间紧张，精神状态比较差，更显疲累。</td>
+</tr>
+<tr>
+<td style="text-align:left">结果</td>
+<td style="text-align:left">现在项目已经在中后期，坚持把剩余的事情做好，对于人的精神、体力都是一番考验。待项目结束后认真分析总结，避免出现类似的情况了。</td>
+<td style="text-align:left">现在项目虽然已经在中后期，但把剩余的事情做好，对于人的精神、体力也是一番考验。可不管怎样，我都不能半途而废。待项目结束后一定认真分析总结，避免再次出现类似的情况。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Function name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>help()</code></td>
+<td>Display the help window.</td>
+</tr>
+<tr>
+<td><code>destroy()</code></td>
+<td><strong>Destroy your computer!</strong></td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="Phoenix�luo2.github.io/2020/02/02/写作逻辑训练/" data-id="ck9f9h4xd0003j8r19prcm5bj" class="article-share-link">Delen</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-Docker on window初体验" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
@@ -94,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="Phoenix�luo2.github.io/2019/11/23/Docker on window初体验/" data-id="ck3bk21r30000zsr1cpmn4fcj" class="article-share-link">Share</a>
+      <a data-url="Phoenix�luo2.github.io/2019/11/23/Docker on window初体验/" data-id="ck9f9h4x20000j8r1o07mshtg" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -135,7 +270,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="Phoenix�luo2.github.io/2019/11/10/Flink学习初体验/" data-id="ck3bk21r80001zsr16gdy3qxb" class="article-share-link">Share</a>
+      <a data-url="Phoenix�luo2.github.io/2019/11/10/Flink学习初体验/" data-id="ck9f9h4x70001j8r1v74md3zo" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -251,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="Phoenix�luo2.github.io/2019/11/10/hello-world/" data-id="ck3bk21vu0002zsr1v2kj26n4" class="article-share-link">Share</a>
+      <a data-url="Phoenix�luo2.github.io/2019/11/10/hello-world/" data-id="ck9f9h4xg0004j8r1py7y01lx" class="article-share-link">Delen</a>
       
       
     </footer>
@@ -276,9 +411,9 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archieven</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a></li></ul>
     </div>
   </div>
 
@@ -286,9 +421,17 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
+    <h3 class="widget-title">Recente berichten</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2020/04/25/按距离k间隔重排字符串/">按距离k间隔重排字符串</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/02/写作逻辑训练/">语言组织能力和叙事微观逻辑专项训练--第二篇</a>
+          </li>
         
           <li>
             <a href="/2019/11/23/Docker on window初体验/">Docker on window初体验</a>
@@ -314,7 +457,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2019 luofeng<br>
+      &copy; 2020 luofeng<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
